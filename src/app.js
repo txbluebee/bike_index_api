@@ -1,9 +1,19 @@
 import './assets/scss/app.scss';
-import { sum } from './assets/js/sum'; //import sum js module
+import { bikeData } from './assets/js/bike'
 import 'jquery';
 import 'bootstrap'; // importing bootstrap.js
 
 import 'bootstrap/scss/bootstrap.scss'; // bootstrap.scss
 
-const total = sum(10,5);
-console.log(total);
+const list = document.querySelector('.list');
+
+bikeData.then((response)=>{
+  const bikes = response.bikes;
+  let str = '';
+  for(let i=0; i<bikes.length;i++){
+    str += `<li>Title: ${bikes[i].title} Color:${bikes[i].frame_colors}</li>`
+  }
+  list.innerHTML = str;
+}).catch((response)=>{
+  list.innerHTML = response.error;
+})

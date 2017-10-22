@@ -1,13 +1,13 @@
 {
-  "name": "webpack-boilerplate",
+  "name": "bike-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "A basic webpack 3 template to start with any JS/ES6 based project.\r <br>",
   "main": "index.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
-    "build:prod": "./node_modules/.bin/webpack -p",
-    "watch": "./node_modules/.bin/webpack --watch",
-    "dev": "./node_modules/.bin/webpack-dev-server"
+    "build": "webpack",
+    "build:prod": "webpack -p",
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server"
   },
   "author": "",
   "license": "ISC",
@@ -32,5 +32,13 @@
   "dependencies": {
     "bootstrap": "^4.0.0-beta",
     "popper.js": "^1.12.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/txbluebee/Webpack_Template.git"
+  },
+  "bugs": {
+    "url": "https://github.com/txbluebee/Webpack_Template/issues"
+  },
+  "homepage": "https://github.com/txbluebee/Webpack_Template#readme"
 }
