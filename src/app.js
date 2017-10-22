@@ -1,5 +1,5 @@
 import './assets/scss/app.scss';
-import { bikeData } from './assets/js/bike'
+import { Bike } from './assets/js/bike'
 import 'jquery';
 import 'bootstrap'; // importing bootstrap.js
 
@@ -7,13 +7,21 @@ import 'bootstrap/scss/bootstrap.scss'; // bootstrap.scss
 
 const list = document.querySelector('.list');
 
-bikeData.then((response)=>{
-  const bikes = response.bikes;
-  let str = '';
-  for(let i=0; i<bikes.length;i++){
-    str += `<li>Title: ${bikes[i].title} Color:${bikes[i].frame_colors}</li>`
-  }
-  list.innerHTML = str;
-}).catch((response)=>{
-  list.innerHTML = response.error;
-})
+let bikeData = new Bike();
+const defaultBikeData = bikeData.getBikeData('Trek');
+
+
+function  displayBikeData(response){
+  response.then((response)=>{
+    const bikes = response.bikes;
+    let str = '';
+    bikes.forEach((bike)=>{
+      str += `<li>Title: ${bike.title}</li> Make: ${bike.manufacturer_name}`
+    });
+    list.innerHTML = str;
+  }).catch((response)=>{
+    list.innerHTML = response.error;
+  })
+}
+
+displayBikeData(defaultBikeData);
